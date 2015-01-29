@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>GO COWS</title>
+    <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="apf.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="master.css" />
+    <link rel="stylesheet" type="text/css" href="print.css" media="print" />
+</head>
+<body>
+    <h2>GO COWS! Free Análise Ponto de Função SISP 2.0</h2>
+    <table border="1" id="maintable" class="list">
+        <thead>
+            <tr>
+                <td><strong>Fator de ajuste</strong></td>
+                <td><strong>Processo Elementar</strong></td>
+                <td><strong>DER</strong></td>
+                <td><strong>RL/AR</strong></td>
+                <td><strong>TIPO</strong></td>
+                <td><strong>N. Fator Ajuste</strong></td>
+                <td><strong>Complexidade</strong></td>
+                <td><strong>PF Bruto</strong></td>
+                <td><strong>PF Final</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <select>
+                        <option value="1">Aplicação</option>
+                        <option value="1">Novo sistema</option>
+                        <option value="1">Melhoria – Nova</option>
+                        <option value="0.5">Melhoria – Alterada - EU</option>
+                        <option value="0.75">Melhoria – Alterada - não EU (doc. atualizada)</option>
+                        <option value="1">Melhoria – Alterada - não EU (doc não atualizada)</option>
+                        <option value="0.4">Melhoria – Excluída</option>
+                        <option value="1">Migração de Dados</option>
+                        <option value="0">Corretiva – Garantia</option>
+                        <option value="0.6">Corretiva – Aplicação documentada</option>
+                        <option value="0.7">Corretiva – Aplicação sem documentação (s/ doc)</option>
+                        <option value="0.8">Corretiva – Aplicação sem documentação (c/ doc)</option>
+                        <option value="1">Redesenvolvimento em outra plataforma</option>
+                        <option value="0.5">Atualização Plataforma (c/ doc)</option>
+                        <option value="0.4">Atualização Plataforma (s/ doc)</option>
+                        <option value="0.1">Manutenção Interface</option>
+                        <option value="0.7">Adaptação Funcionalidades (s/ doc)</option>
+                        <option value="0.8">Adaptação Funcionalidades (c/ doc)</option>
+                        <option value="1">Apuração Especial – Base Dados</option>
+                        <option value="0.6">Apuração Especial – Base Dados – Consulta Prévia</option>
+                        <option value="1">Apuração Especial – Emissão Relatório</option>
+                        <option value="0.1">Apuração Especial – Reexecução</option>
+                        <option value="0.1">Atualização Dados</option>
+                        <option value="0.5">Manutenção Páginas Estáticas</option>
+                        <option value="0.25">Verificação Erros</option>
+                        <option value="0.20">Pontos Função Teste</option>
+                        <option value="1">Manutenção Componente</option>
+                    </select>
+                </td>
+                <td><input type="text" value="" style="width: 300px;"/></td>
+                <td><input type="text" value="0" style="width: 30px;"/></td>
+                <td><input type="text" value="0" style="width: 30px;"/></td>
+                <td>
+                    <select>
+                        <option value="EE">EE</option>
+                        <option value="SE">SE</option>
+                        <option value="CE">CE</option>
+                        <option value="ALI">ALI</option>
+                        <option value="AIE">AIE</option>
+                    </select>
+                </td>
+                <td>0</td>
+                <td>-</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                    <input id="addfield" type="button" value="Adicionar Campos"/>
+                    <input id="removeemptyfield" type="button" value="Limpar Campos Vazios" />
+                    <input id="sumpf" type="button" value="Calcular"/>
+                </td>
+                <td><strong>PF Total:</strong></td>
+                <td><span id="pftotal">0</span></td>
+            </tr>
+        </tfoot>
+    </table>
+    <script type="text/javascript">
+        var FIELD = $('#maintable tbody').html();
+
+        $('#addfield').click(function(){
+            $('#maintable tbody').append(FIELD);
+        });
+
+        $('#removeemptyfield').click(function(){
+            $('#maintable tbody tr').each(function(){
+               if(parseInt($(this).find('td:eq(8)').text()) == 0){
+                   $(this).remove();
+               }
+            });
+        });
+
+        $('#sumpf').click(function(){
+            $('#maintable tbody tr').each(function(){
+                var resultado = calculaPF({
+                    FATOR: parseFloat($(this).find('td:eq(0) select').val()),
+                    DER: parseInt($(this).find('td:eq(2) input').val()),
+                    RLAR: parseInt($(this).find('td:eq(3) input').val()),
+                    TIPO: $(this).find('td:eq(4) select').val()
+                });
+
+                $(this).find('td:eq(5)').text(resultado.fator);
+                $(this).find('td:eq(6)').text(resultado.complexidade);
+                $(this).find('td:eq(7)').text(resultado.pf_bruto);
+                $(this).find('td:eq(8)').text(resultado.pf_final);
+
+                var PFTOTAL = 0;
+                $('#maintable tbody tr').each(function(){
+                    PFTOTAL += parseFloat($(this).find('td:eq(8)').text());
+                });
+
+                $('#pftotal').text(PFTOTAL.toFixed(2));
+            });
+        });
+    </script>
+</body>
+</html>

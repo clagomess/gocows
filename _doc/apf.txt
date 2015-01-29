@@ -1,0 +1,230 @@
+=SE(K11="EE";
+	SE(
+		OU(
+			E(OU(J11=1;J11=0);I11>0;I11<5);
+			E(OU(J11=1;J11=0);I11>4;I11<16);
+			E(J11=2;I11>0;I11<5)
+		);
+		"Simples";
+		SE(
+			OU(
+				E(OU(J11=1;J11=0);I11>15);
+				E(J11=2;I11>4;I11<16);
+				E(J11>2;I11>0;I11<5)
+			);
+			"Médio";
+			SE(
+				OU(
+					E(J11=2;I11>15);
+					E(J11>2;I11>4;I11<16);
+					E(J11>2;I11>15)
+				);
+				"Complexo";
+				""
+			)
+		)
+	);
+	SE(
+		OU(K11="CE";K11="SE");
+		SE(
+			OU(
+				E(OU(J11=1;J11=0);I11>0;I11<6);
+				E(OU(J11=1;J11=0);I11>5;I11<20);
+				E(J11>1;J11<4;I11>0;I11<6)
+			);
+			"Simples";
+			SE(
+				OU(
+					E(OU(J11=1;J11=0);I11>19);
+					E(J11>1;J11<4;I11>5;I11<20);
+					E(J11>3;I11>0;I11<6)
+				);
+				"Médio";
+				SE(
+					OU(
+						E(J11>1;J11<4;I11>19);
+						E(J11>3;I11>5;I11<20);
+						E(J11>3;I11>19)
+					);
+					"Complexo";
+					""
+				)
+			)
+		);
+		""
+	)
+)
+
+=SE(
+	K11="ALI";
+	SE(
+		OU(
+			E(OU(J11=1;J11=0);I11>0;I11<20);
+			E(OU(J11=1;J11=0);I11>19;I11<51);
+			E(J11>1;J11<6;I11>0;I11<20)
+		);
+		"Simples";
+		SE(
+			OU(
+				E(OU(J11=1;J11=0);I11>50);
+				E(J11>1;J11<6;I11>19;I11<51);
+				E(J11>5;I11>0;I11<20)
+			);
+			"Médio";
+			SE(
+				OU(
+					E(J11>1;J11<6;I11>50);
+					E(J11>5;I11>19;I11<51);
+					E(J11>5;I11>50)
+				);
+				"Complexo";
+				""
+			)
+		)
+	);
+	SE(
+		K11="AIE";
+		SE(
+			OU(
+				E(OU(J11=1; J11=0);I11>0;I11<20);
+				E(OU(J11=1; J11=0);I11>19;I11<51);
+				E(J11>1;J11<6;I11>0;I11<20)
+			);
+			"Simples";
+			SE(
+				OU(
+					E(OU(J11=1; J11=0);I11>50);
+					E(J11>1;J11<6;I11>19;I11<51);
+					E(J11>5;I11>0;I11<20)
+				);
+				"Médio";
+				SE(
+					OU(
+						E(J11>1;J11<6;I11>50);
+						E(J11>5;I11>19;I11<51);
+						E(J11>5;I11>50)
+					);
+					"Complexo";
+					""
+				)
+			)
+		);
+		""
+	)
+)
+
+=SE(
+	E(OU(K11="EE";K11="CE");N11="Simples");3;
+	SE(E(OU(K11="EE";K11="CE");N11="Médio");4;
+	SE(E(OU(K11="EE";K11="CE");N11="Complexo");6;
+	SE(E(K11="SE";N11="Simples");4;
+	SE(E(K11="SE";N11="Médio");5;
+	SE(E(K11="SE";N11="Complexo");7;0)))))
+)
+
+=SE(E(K11="ALI";M11="Simples");7;
+SE(E(K11="ALI";M11="Médio");10;
+SE(E(K11="ALI";M11="Complexo");15;
+SE(E(K11="AIE";M11="Simples");5;
+SE(E(K11="AIE";M11="Médio");7;
+SE(E(K11="AIE";M11="Complexo");10;0))))))
+
+---
+K11 = TIPO
+J11 = RL/AR
+I11 = DER
+--
+
+Aplicação 1
+Novo sistema 1
+Melhoria – Nova 1
+Melhoria – Alterada - Basis 0.5
+Melhoria – Alterada - não Basis (doc. atualizada) 0.75
+Melhoria – Alterada - não Basis (doc não atualizada) 1
+Melhoria – Excluída 0.4
+Migração de Dados 1
+Corretiva – Garantia 0
+Corretiva – Aplicação documentada 0.6
+Corretiva – Aplicação sem documentação (s/ doc) 0.7
+Corretiva – Aplicação sem documentação (c/ doc) 0.8
+Redesenvolvimento em outra plataforma 1
+Atualização Plataforma (c/ doc) 0.5
+Atualização Plataforma (s/ doc) 0.4
+Manutenção Interface 0.1
+Adaptação Funcionalidades (s/ doc) 0.7
+Adaptação Funcionalidades (c/ doc) 0.8
+Apuração Especial – Base Dados 1
+Apuração Especial – Base Dados – Consulta Prévia 0.6
+Apuração Especial – Emissão Relatório 1
+Apuração Especial – Reexecução 0.1
+Atualização Dados 0.1
+Manutenção Páginas Estáticas 0.5
+Verificação Erros 0.25
+
+
+--
+
+if(TIPO == 'EE'){
+	if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 0 && DER < 5) ||
+		((RL/AR == 1 || RL/AR == 0) && DER > 4 && DER < 16) ||
+		(RL/AR == 2 && DER > 0 && DER < 5)
+	)else{
+		//Simples
+	}else if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 15) ||
+		(RL/AR == 2 && DER > 4 && DER < 16) ||
+		(RL/AR > 2 && DER > 0 && DER < 5) ||
+	){
+		//Médio
+	}else if(
+		(RL/AR == 2 && DER > 15) ||
+		(RL/AR > 2 && DER > 4 && DER < 16) ||
+		(RL/AR > 2 && DER > 15)
+	){
+		//Complexo
+	}
+}else if(TIPO == 'CE' || TIPO == 'SE'){
+	if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 0 && DER < 6) ||
+		((RL/AR == 1 || RL/AR == 0) && DER > 5 && DER < 20) ||
+		(RL/AR > 1 && RL/AR < 4 && DER > 0 && DER < 5)
+	){
+		//Simples
+	}else if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 19) ||
+		(RL/AR > 1 && RL/AR < 4 && DER > 5 && DER < 20) ||
+		(RL/AR > 3 && DER > 0 && DER < 6)
+	){
+		//Médio
+	}else if(
+		(RL/AR > 1 && RL/AR < 4 && DER > 19) ||
+		(RL/AR > 3 && DER > 5 && DER < 20) ||
+		(RL/AR > 3 && DER > 19)
+	){
+		//Complexo
+	}
+	
+}else if(TIPO == 'ALI' || TIPO == 'AIE'){
+	if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 0 && DER < 20) ||
+		((RL/AR == 1 || RL/AR == 0) && DER > 19 && DER < 51) ||
+		(RL/AR > 1 && RL/AR < 6 && DER > 0 && DER < 20)
+	){
+		//Simples
+	}else if(
+		((RL/AR == 1 || RL/AR == 0) && DER > 50) ||
+		(RL/AR > 1 && RL/AR < 6 && DER > 19 && DER < 51) ||
+		(RL/AR > 5 && RL/AR > 0 && DER < 20)
+	){
+		//MEDIO
+	}else if(
+		(RL/AR > 1 && RL/AR < 6 && DER > 50) ||
+		(RL/AR > 5 && DER > 19 && DER < 51) ||
+		(RL/AR > 5 && > 50)
+	){
+		//Complexo
+	}
+}else{
+	//Nothing to do
+}

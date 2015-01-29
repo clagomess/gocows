@@ -1,0 +1,106 @@
+body{
+    font-family:Helvetica, Arial, sans-serif;
+    font-size:12px;
+}
+a{
+    text-decoration:none;
+    color: #21759b;
+}
+a:hover{
+    text-decoration:underline;
+    color: #333333;
+}
+.clear{clear:both;}
+.v-none{display:none}
+.v-hidden{visibility:hidden}
+.f-left{float: left}
+.f-right{float: right}
+
+img{
+    border:0px none;
+}
+p,h1,h2,h3,h4{
+    padding:0px;
+    margin:0 0 10px 0;
+}
+input[type=text],
+input[type=password],
+input[type=submit],
+input[type=button],
+select,
+textarea{
+    background:#FFF;
+    border:1px solid #ccc; 
+    color:#666;
+    padding:4px;
+    font-size: 12px;
+}
+input[type=button],
+input[type=submit]{
+    cursor:pointer;
+    margin:0px;
+}
+select[disabled=disabled],
+textarea[disabled=disabled],
+input[disabled=disabled]{
+    background:#e6e6e6;
+    text-shadow:#FFF 1px 1px;
+    cursor: default;
+}
+input.error,
+select.error,
+textarea.error{
+    border:1px solid #ff9393; 
+    background:#ffeeee; 
+    color:#f00;
+}
+input.ok,
+select.ok,
+textarea.ok{
+    border:1px solid #208f28; 
+    background:#bef7c3; 
+    color:#208f28;
+}
+input.alert,
+select.alert,
+textarea.alert{
+    border:1px solid #ffa200; 
+    background:#fff668; 
+    color:#ffa200;
+}
+textarea{resize:none;}
+fieldset{
+    border:1px solid #CCC;
+    margin:0px;
+    padding:10px;
+}
+fieldset legend{font-weight:bolder;}
+fieldset label{
+    display:block;
+    margin-bottom:5px;
+}
+fieldset span{color:#F00;} /* para obrigatório */
+fieldset em{font-size:10px;} /* para descritivo */
+
+table{
+    border-collapse: collapse;
+}
+table td{
+    word-wrap:break-word;
+    padding:4px;
+}
+    table.list td {
+        border:1px solid #CCC;
+    }
+table.list thead tr,
+table.list tfoot tr{
+    background:#efefef; 
+    font-weight:bolder;
+}
+table.list thead td{
+    padding:6px;
+}
+table.list tfoot td{
+    font-size:10px;
+    font-weight:normal;
+}

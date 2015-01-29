@@ -1,0 +1,8 @@
+#maintable tbody input,
+#maintable tbody select{
+    border:0px none;
+}
+
+#maintable tfoot input{
+    display:none;
+}
